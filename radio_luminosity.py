@@ -6,7 +6,7 @@ from decimal import Decimal
 #Radio luminosity equation from O'Dea and Owen 1987
 def lrad():
     return (1.2*10**27)*(D**2)*(S0)*((ν0)**(-α))*((1+z)**(-(1+α)))*((νu**(1+α))-(νl**(1+α)))*((1+α)**(-1))
-#Equation of error in flux densities taken from Kale et al. 2019
+#Equation of error in flux densities taken from Kale et al. 2016
 def fluxerr():
     return np.sqrt((σ*np.sqrt(Nb))**2+(σabs*S0)**2)  
 
@@ -17,7 +17,7 @@ def fluxerr():
 
 S0=XXXX    #flux density in Jy
 σ=XXXX    #rms noise of the image
-σabs=0.05   #calculated for uGMRT band-4 (See Kale et al. 2019)
+σabs=0.05   #Assuming 5% error in amplitude at 10 GHz 
 beamarea=XXXX #in pixels  
 Npts=XXXX
 Nb=Npts/beamarea
