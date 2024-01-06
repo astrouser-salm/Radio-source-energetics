@@ -1,11 +1,13 @@
 ###############################################################################################################
 #####Input parameter from NASA NED
 ###############################################################################################################
+
 a=XXXX  #scale in kpc/arcsec 
 
 ###############################################################################################################
 #####Input parameters from AIPS imastat/tvstat or CASA viewer region statistics
 ###############################################################################################################
+
 larc=XXXX    #length of the emission in arcsec
 rarc=XXXX  #radius of the emission in arcsec
 
@@ -49,7 +51,9 @@ c13_ν11=interp1d(α_theory,c13_theory_ν11,kind='linear', fill_value='extrapola
 ###############################################################################################################
 #####Input parameters from AIPS imastat/tvstat or CASA viewer region statistics
 ###############################################################################################################
+
 α_abs=XXXX #Value of spectral index without error
+
 ###############################################################################################################
 
 if find_closest(νu,ν_lim)==1e10:
@@ -62,8 +66,10 @@ else:
 ###############################################################################################################
 #####Assumptions. See O'Dea and Owen 1987 for details
 ###############################################################################################################    
-k=1
-phi=1
+
+k=1    #ion/electron energy ratio
+phi=1  #Volume filling factor
+
 ###############################################################################################################
 
 print('c12 value used =',c12)
@@ -72,6 +78,6 @@ Bmin=Bmin()
 print('Equipartition magnetic field value =', Bmin*10**6,'μG')
 Emin=Emin()
 print('Particle energy at minimum pressure =', Emin,'erg')
-print('Total energy of the galaxy (particles+fields) =',1.25*Emin) #see O'Dea and Owen 1987
-
-
+print('Total energy of the galaxy (particles+fields) =',1.25*Emin,'erg') #see O'Dea and Owen 1987
+print('Energy density =',1.25*Emin/(Vcm*phi),'erg/cm\u00b3')
+print('Electron temperature =',1.18*10**6*(ν0/Bmin)**(0.5),'K') #see https://www.cv.nrao.edu/~sransom/web/Ch5.html#S3.SS3
